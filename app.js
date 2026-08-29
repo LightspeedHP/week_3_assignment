@@ -14,13 +14,13 @@ app.get('/todos', (req, res) => {
   res.status(200).json(todos); // Send array as JSON
 });
 
-//GET Single read
+//GET Single- Read
 app.get('/todos/active', (req, res) => {
   const activeTodos = todos.filter((t) => t.completed);
   res.status(200).json(activeTodos); 
 });
 
-//GET active tasks
+//GET Active tasks
 app.get('/todos/:id', (req, res) => {
   const id = req.params.id;
   const todo = todos.find((t) => t.id === parseInt(id));
@@ -29,7 +29,7 @@ app.get('/todos/:id', (req, res) => {
   res.status(200).json(todo);
 });
 
-// POST New – Create
+// POST New – Create, with task validation
 app.post('/todos', (req, res) => {
   const {task, completed} = req.body;
   if (!task)
