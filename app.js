@@ -14,11 +14,13 @@ app.get('/todos', (req, res) => {
   res.status(200).json(todos); // Send array as JSON
 });
 
+//GET Single read
 app.get('/todos/active', (req, res) => {
   const activeTodos = todos.filter((t) => t.completed);
   res.status(200).json(activeTodos); 
 });
 
+//GET active tasks
 app.get('/todos/:id', (req, res) => {
   const id = req.params.id;
   const todo = todos.find((t) => t.id === parseInt(id));
