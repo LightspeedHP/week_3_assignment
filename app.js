@@ -15,10 +15,7 @@ app.use(logger);
 // GET All – Read
 app.get('/todos', async(req, res, next) => {
   try {
-    let query = {};
-    if(req.query)
-      query = req.query.completed
-    const todos = await Todo.find({query});
+    const todos = await Todo.find(req.query);
     res.status(200).json(todos); // Send array as JSON
   } catch (error) {
     next(error)
